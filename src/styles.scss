@@ -1,0 +1,228 @@
+:root {
+    --dark1: #000;
+    --dark2: #333;
+    --dark3: #666;
+    --light1: #fff;
+    --light2: #ddd;
+    --light3: #aaa;
+    --blue1: #9bd0ff;
+    --blue2: #86c7ff;
+    --blue3: #0188fd;
+    --blue4: #0059a7;
+  }
+  
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+  .container {
+    font-family: "微軟正黑體";
+    background-color: var(--dark2);
+    color: var(--light2);
+    width: 380px;
+    .Time {
+      padding: 1.2rem;
+      .nowClock {
+        font-size: 2.5rem;
+        letter-spacing: 0.15rem;
+        font-weight: 100;
+      }
+      .nowDate {
+        color: var(--blue2);
+        font-size: 0.8rem;
+      }
+    }
+    .calendar {
+      display: flex;
+      justify-content: center;
+      border-top: solid 0.1rem var(--dark3);
+      .calendarWrap {
+        margin: 1rem 0; 
+        width: 350px;
+        .changeBox {
+          display: flex;
+          align-items: center;
+          .current {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            margin-left: 1rem;
+            font-size: 0.85rem;
+            cursor: pointer;
+          }
+          .pagetion {
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+            & > div {
+              margin: 1px;
+              width: calc( calc( 100% / 7) - 2px);
+              text-align: center;
+            }
+            .prev:hover,
+            .next:hover {
+              cursor: pointer;
+              color: var(--light1);
+            }
+          }
+        }
+        /*extend*/
+        %box{
+          display: flex;
+          flex-wrap: wrap;
+          height: 300px;
+        }
+        %cell{
+          border: 0.15rem solid transparent;
+          margin: 1px;
+          text-align: center;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          &:hover{
+            border-color: var(--dark3);
+          }
+        }
+        %current{
+          background-color: var(--blue3);
+          color: var(--light2) !important;
+          &:hover {
+            border-color: var(--blue1) !important;
+          }
+        }
+        /*extend*/
+        .datesBox {
+          @extend %box;
+          font-size: 0.7rem;
+          .dateCell {
+            @extend %cell;
+            width: calc( calc( 100% / 7) - 2px);
+            height: calc( calc( 100% / 7) - 2px);
+            cursor: pointer;
+            .dateBox {
+              width: 90%;
+              height: 90%;
+            }
+          }
+          .title:hover{
+            border-color: transparent;
+            cursor: initial;
+          }
+          .otherMonth {
+            color: var(--dark3);
+          }
+          .dateActive {
+            border-color: var(--blue3);
+            &:hover {
+              border-color: var(--blue4);
+            }
+          }
+          .today {
+            @extend %current;
+            &.dateActive .dateBox {
+              outline: 0.15rem solid var(--dark1);
+              background-color: var(--blue3);
+            }
+          }
+        }
+        .monthsBox {
+          @extend %box;
+          .monthCell {
+            @extend %cell;
+            width: calc( calc( 100% / 4) - 2px);
+            height: calc( calc( 100% / 4) - 2px);
+            cursor: pointer;
+          }
+          .otherYear{
+            color: var(--dark3);
+          }
+  
+          .currentMonth{
+            @extend %current;
+          }
+        }
+        .yearBox{
+          @extend %box;
+          overflow-y: auto; 
+          &::-webkit-scrollbar{
+            display: none;
+          }
+          .yearCell {
+            @extend %cell;
+            width: calc( calc( 100% / 4) - 2px);
+            height: calc( calc( 100% / 4) - 2px);
+            cursor: pointer;
+          }
+          .otherRange{
+            color: var(--dark3);
+          }
+  
+          .currentYear{
+            @extend %current;
+          }
+        }
+      }
+    }
+    .todoList {
+      border-top: solid 0.1rem var(--dark3);
+      padding: 0 1rem;
+      & > div {
+        margin-top: 0.5rem;
+      }
+      .activeDate {
+        font-size: 1.15rem;
+      }
+      .createEvent {
+        padding: 0.25em;
+        input[type="text"] {
+          width: 100%;
+          padding: 0.4rem;
+          font-size: 0.9rem;
+          outline: 0;
+          border: 1px solid var(--light3);
+          background-color: transparent;
+          &::placeholder {
+            color: var(--light3);
+          }
+          &:hover {
+            background-color: var(--dark1);
+          }
+          &:focus {
+            background-color: var(--light1);
+          }
+        }
+      }
+      .events {
+        font-size: 0.85rem;
+        height: 100px;
+      }
+    }
+    .todoSwich {
+      display: flex;
+      justify-content: flex-end;
+      padding: 1rem;
+      .todoSwichBt {
+        cursor: pointer;
+        color: var(--blue2);
+        font-size: 0.9rem;
+        &:hover {
+          color: var(--light3);
+        }
+      }
+    }
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
